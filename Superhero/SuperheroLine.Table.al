@@ -59,6 +59,20 @@ table 50103 SuperheroLine
             Editable = false;
             TableRelation = SuperHero."SystemId";
         }
+        field(8; weaponId; Guid)
+        {
+            Caption = 'WeaponId';
+            DataClassification = SystemMetadata;
+            Editable = false;
+            TableRelation = Weapon."SystemId";
+        }
+        field(9; superpowerId; Guid)
+        {
+            Caption = 'SuperPowerId';
+            DataClassification = SystemMetadata;
+            Editable = false;
+            TableRelation = SuperPowers."SystemId";
+        }
     }
 
     keys
@@ -72,9 +86,19 @@ table 50103 SuperheroLine
     trigger OnInsert()
     var
         SuperHero: Record SuperHero;
+        SuperPowers: Record SuperPowers;
+        Weapon: Record Weapon;
     begin
         SuperHero.Get("Superhero Name");
         SuperHeroId := SuperHero."SystemId";
+        if Type = Type::Power then begin
+            SuperPowers.Get("Code");
+            SuperPowerId := SuperPowers."SystemId";
+        end;
+        if Type = Type::Weapon then begin
+            Weapon.Get("Code");
+            WeaponId := Weapon."SystemId";
+        end;
     end;
 
 

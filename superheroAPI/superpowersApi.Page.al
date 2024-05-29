@@ -5,7 +5,7 @@ page 50108 superpowersApi
 {
     APIGroup = 'superheroes';
     APIPublisher = 'fredborg';
-    APIVersion = 'v1.0';
+    APIVersion = 'v2.0';
     ApplicationArea = All;
     Caption = 'superpowersApi';
     DelayedInsert = true;

@@ -5,9 +5,7 @@ page 50109 weaponsApi
 {
     APIGroup = 'superheroes';
     APIPublisher = 'fredborg';
-    APIVersion = 'v1.0';
-    ApplicationArea = All;
-    Caption = 'weaponsApi';
+    APIVersion = 'v2.0';
     DelayedInsert = true;
     EntityName = 'weapon';
     EntitySetName = 'weapons';

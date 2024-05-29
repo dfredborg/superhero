@@ -5,7 +5,7 @@ page 50100 SuperHeroApi
 {
     APIGroup = 'superheroes';
     APIPublisher = 'fredborg';
-    APIVersion = 'v1.0';
+    APIVersion = 'v2.0';
     ApplicationArea = All;
     Caption = 'superHeroApi';
     DelayedInsert = true;
@@ -47,14 +47,18 @@ page 50100 SuperHeroApi
                 }
                 part(lines; superheroLinesAPI)
                 {
-                    EntityName = 'superheroLine';
-                    EntitySetName = 'superheroLines';
+                    EntityName = 'superheroLineBC';
+                    EntitySetName = 'superheroLinesBC';
                     SubPageLink = SuperHeroId = field("SystemId");
-                }
-                field(profilePicture; Rec.GetProfilePictureBase64())
-                {
                 }
             }
         }
     }
+
+    [ServiceEnabled]
+    procedure getProfilePicture(): Text
+    begin
+        exit(rec.GetProfilePictureBase64());
+    end;
+
 }

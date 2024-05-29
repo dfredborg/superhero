@@ -5,12 +5,12 @@ page 50107 superherolinesAPI
 {
     APIGroup = 'superheroes';
     APIPublisher = 'fredborg';
-    APIVersion = 'v1.0';
+    APIVersion = 'v2.0';
     ApplicationArea = All;
     Caption = 'superherolinesAPI';
     DelayedInsert = true;
-    EntityName = 'superheroLine';
-    EntitySetName = 'superheroLines';
+    EntityName = 'superheroLineBC';
+    EntitySetName = 'superheroLinesBC';
     PageType = API;
     SourceTable = SuperheroLine;
     ODataKeyFields = SystemId;
@@ -44,20 +44,25 @@ page 50107 superherolinesAPI
                 }
                 field(superHeroId; Rec.SuperHeroId)
                 {
-                    Caption = 'SuperHeroId';
+                }
+                field(powerId; Rec.SuperPowerId)
+                {
+                }
+                field(weaponId; Rec.WeaponId)
+                {
                 }
 
                 part(weapons; weaponsAPI)
                 {
                     EntityName = 'weapon';
                     EntitySetName = 'weapons';
-                    SubPageLink = Code = field("Code");
+                    SubPageLink = SystemId = field("weaponId");
                 }
                 part(superpowers; superpowersAPI)
                 {
                     EntityName = 'superPower';
                     EntitySetName = 'superPowers';
-                    SubPageLink = Code = field("Code");
+                    SubPageLink = SystemId = field("superPowerId");
                 }
 
             }
