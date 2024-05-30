@@ -1,5 +1,7 @@
 namespace Fredborg.Superheroes.Superhero;
 
+using Fredborg.Superheroes.Superhero;
+
 table 50103 SuperheroLine
 {
     Caption = 'SuperheroLine';
@@ -58,20 +60,42 @@ table 50103 SuperheroLine
             DataClassification = SystemMetadata;
             Editable = false;
             TableRelation = SuperHero."SystemId";
+
+            trigger OnValidate()
+            var
+                SuperHero: Record SuperHero;
+            begin
+                SuperHero.GetBySystemId(SuperHeroId);
+                rec."Superhero Name" := SuperHero.Name;
+            end;
         }
         field(8; weaponId; Guid)
         {
             Caption = 'WeaponId';
             DataClassification = SystemMetadata;
-            Editable = false;
             TableRelation = Weapon."SystemId";
+
+            trigger OnValidate()
+            var
+                Weapon: Record Weapon;
+            begin
+                Weapon.GetBySystemId(WeaponId);
+                rec.Code := Weapon.Code;
+            end;
         }
         field(9; superpowerId; Guid)
         {
             Caption = 'SuperPowerId';
             DataClassification = SystemMetadata;
-            Editable = false;
             TableRelation = SuperPowers."SystemId";
+
+            trigger OnValidate()
+            var
+                SuperPowers: Record SuperPowers;
+            begin
+                SuperPowers.GetBySystemId(SuperPowerId);
+                rec.Code := SuperPowers.Code;
+            end;
         }
     }
 

@@ -68,4 +68,17 @@ page 50107 superherolinesAPI
             }
         }
     }
+
+    trigger OnInsertRecord(BelowxRec: Boolean): Boolean
+    var
+        SuperheroLine: Record SuperheroLine;
+        lineNo: Integer;
+    begin
+        SuperheroLine.SetRange("Superhero Name", rec."Superhero Name");
+        if SuperheroLine.FindLast() then
+            lineNo := SuperheroLine."Line No." + 10000
+        else
+            lineNo := 10000;
+        rec."Line No." := lineNo;
+    end;
 }
