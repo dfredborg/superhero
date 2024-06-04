@@ -45,6 +45,9 @@ page 50100 SuperHeroApi
                 field(powerRating; Rec.PowerRating)
                 {
                 }
+                field(profilePicture; Rec.GetProfilePictureBase64())
+                {
+                }
                 part(lines; superheroLinesAPI)
                 {
                     EntityName = 'superheroLineBC';
